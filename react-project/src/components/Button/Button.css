@@ -7,3 +7,21 @@
     font-size: 24px;
     line-height: 29.05px;
 }
+
+.btn-table{
+    color: rgb(5, 188, 82);
+    background-color: rgb(255, 255, 255);
+    width: 140px;
+    height: 40px;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-table > svg{
+    color: black;
+    font-size: 24px;
+}
