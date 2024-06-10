@@ -2,9 +2,9 @@ import "./Button.css";
 
 
 
-function Button({classNam , icon , text}){
+function Button({className , icon , text}){
     return(
-    <button className = {classNam} > {icon}{text}</button>
+    <button className = {className} > {icon}{text}</button>
     );
 }
 
