@@ -3,20 +3,9 @@ import foto from "./notebook.png";
 import { BsCart4 } from "react-icons/bs";
 
 
-const productInfo = [
-    { id: 0, name: "Ноутбук Lenovo Y50-70 Aluminum Black", quantity: 5, price: 25000 },
-    { id: 1, name: "Ноутбук Asus A60-70 Aluminum Blue", quantity: 5, price: 29000 },
-    { id: 2, name: "Ноутбук HP K100-70 Aluminum White", quantity: 5, price: 34000 },
-    { id: 3, name: "Ноутбук HP K100-70 Aluminum White", quantity: 5, price: 34000 },
-    { id: 4, name: "Ноутбук HP K100-70 Aluminum White", quantity: 5, price: 34000 },
-    { id: 5, name: "Ноутбук HP K100-70 Aluminum White", quantity: 5, price: 34000 },
-  ];
-
-function CardProducts(){
+function CardProducts({product}){
     return(
-    <div className="box-info">
-        {productInfo.map((product) => (
-            <div key={product.id} className= "card-info">
+            <div className= "card-info">
             <img  src = {foto} alt ="product" className="card-foto"/>
             <p className="card-name">{product.name}</p>
             <div className="card-combo">
@@ -25,8 +14,6 @@ function CardProducts(){
             </div>
             <p className="card-buy">{<BsCart4/>} Готовий до відправки</p>
             </div>
-))}
-    </div>
     );
 }
 
