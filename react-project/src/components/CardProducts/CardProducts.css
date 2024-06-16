@@ -1,0 +1,50 @@
+.box-info{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card-info{
+    background-color: white;
+    height: 280px;
+    width: 200px;
+}
+
+.card-foto{
+    width: 150px;
+    margin: 20px 25px;
+}
+
+.card-name{
+    text-align: center;
+}
+
+.card-combo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 20px 0;
+}
+
+.card-price{
+    font-size: 24px;
+    color: orange;
+}
+
+.card-buy{
+    color: rgb(5, 188, 82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.card-buy > svg{
+    width: 20px;
+    height: 20px;
+}

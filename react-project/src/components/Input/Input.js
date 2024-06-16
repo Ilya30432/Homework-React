@@ -1,9 +1,9 @@
 import "./Input.css";
 
-function Input({placeholder,icon,classDiv}){
+function Input({placeholder,icon,classDiv, type}){
     return(
     <div className={classDiv}>
-    <input type = "text" className = "input"  placeholder = {placeholder} />
+    <input  className = "input"  placeholder = {placeholder} type={type}  />
     {icon}
     </div>
     );
