@@ -15,7 +15,7 @@ const Form = () => {
   const [password, setPassword] = useState("");
   const [isNameEmpty, setIsNameEmpty] = useState(false);
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const validForm = () => {
     if (!name.trim()) setIsNameEmpty(true);
@@ -41,14 +41,14 @@ const Form = () => {
       })
     }).then(response => {
       if (!response.ok) {
-        throw new Error('Данные не верные');
+        throw new Error('Data is not valid');
       }
       return response.json();
     }).then(data => {
       localStorage.setItem('jwt', data.jwt);
-      setErrorMessage("");
+      setErrorMessage(false);
     }).catch(error => {
-      setErrorMessage("Данные не верные");
+      setErrorMessage(true);
     });
   };
   
