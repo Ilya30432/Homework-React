@@ -6,7 +6,7 @@
 }
 .title-info{
     max-width: 165px;
-    padding: 10px 40px 10px 40px;
+    padding: 10px 41px 10px 41px;
     color: #726969;
     font-weight: 700;
     text-align: center;
@@ -15,10 +15,10 @@
     background-color: rgb(14, 200, 111);
 }
 
-.row-0{
+.row-1{
     background-color: rgb(217, 217, 217);
 }
-.info-0{
+.info-1{
     width: 135px;
     padding: 10px 40px 10px 40px;
     color: white;
@@ -26,20 +26,41 @@
     text-align: center;
 }
 
-.row-1{
+.row-2{
     background-color: rgb(14, 200, 111);
 }
-.info-1{
+.info-2{
     padding: 10px 40px 10px 40px;
     color: rgb(114, 105, 105);
     font-weight: 700;
     text-align: center;
 }
 
-.row-2{
+.row-3{
     background-color: rgb(217, 217, 217);
 }
-.info-2{
+.info-3{
+    padding: 10px 40px 10px 40px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+.row-4{
+    background-color: rgb(14, 200, 111);
+}
+.info-4{
+    padding: 10px 40px 10px 40px;
+    color: rgb(114, 105, 105);
+    font-weight: 700;
+    text-align: center;
+}
+
+.row-5{
+    background-color: rgb(217, 217, 217);
+}
+.info-5{
     padding: 10px 40px 10px 40px;
     color: white;
     font-weight: 700;
