@@ -12,8 +12,8 @@ function Products() {
             <img src ={logo} alt="logo" />
         </div>
         <div className = "box-btn">
-            <Button classNam= "btn-table" text= "Preview" icon={<MdOutlinePeopleAlt/>}/>
-            <Button classNam= "btn-table" text= "Add product" icon={<GoPlus/>} />
+            <Button className= "btn-table" text= "Preview" icon={<MdOutlinePeopleAlt/>}/>
+            <Button className= "btn-table" text= "Add product" icon={<GoPlus/>} />
         </div>
         <h2 className = "title">Products</h2>
         <Table />

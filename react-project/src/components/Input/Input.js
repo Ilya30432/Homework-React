@@ -1,12 +1,19 @@
 import "./Input.css";
 
-function Input({placeholder,icon,classDiv, type}){
-    return(
+function Input({ isErorr, name, onInputChange, value, placeholder, icon, classDiv, type }) {
+  return (
     <div className={classDiv}>
-    <input  className = "input"  placeholder = {placeholder} type={type}  />
-    {icon}
+      <input
+        name={name}
+        value={value}
+        onChange={(event) => onInputChange(event.target.value)}
+        className= {`input ${isErorr && "input-erorr "}`}
+        placeholder={placeholder}
+        type={type}
+      />
+      {icon}
     </div>
-    );
+  );
 }
 
 export default Input;
