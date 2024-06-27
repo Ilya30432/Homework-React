@@ -3,9 +3,9 @@ import foto from "./notebook.png";
 import { BsCart4 } from "react-icons/bs";
 
 
-function CardProducts({product,onClick}){
+function CardProducts({product}){
     return(
-            <div className= "card-info" onClick={() => onClick(product.id)}>
+            <div className= "card-info">
             <img  src = {foto} alt ="product" className="card-foto"/>
             <p className="card-name">{product.name}</p>
             <div className="card-combo">

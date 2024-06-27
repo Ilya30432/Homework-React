@@ -4,7 +4,6 @@ import Button from "../Button/Button";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import "./Form.css";
-import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -17,8 +16,6 @@ const Form = () => {
   const [isNameEmpty, setIsNameEmpty] = useState(false);
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-
-  const navigate = useNavigate();
 
   const validForm = () => {
     if (!name.trim()) setIsNameEmpty(true);
@@ -52,7 +49,6 @@ const Form = () => {
       const data = await response.json();
       localStorage.setItem("jwt", data.jwt);
       setErrorMessage(false);
-      navigate("/products");
     } catch (error) {
       setErrorMessage(true);
     }
