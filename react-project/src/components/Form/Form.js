@@ -24,34 +24,35 @@ const Form = () => {
     return name.trim() && password.trim();
   };
 
-  const HandleSubmit = (event) => {
+  const HandleSubmit = async (event) => {
     event.preventDefault();
     const isValid = validForm();
     if (!isValid) {
       return null;
     }
-    fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        password: password,
-      })
-    }).then(response => {
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          password: password,
+        }),
+      });
+
       if (!response.ok) {
-        throw new Error('Data is not valid');
+        throw new Error("Data is not valid");
       }
-      return response.json();
-    }).then(data => {
-      localStorage.setItem('jwt', data.jwt);
+
+      const data = await response.json();
+      localStorage.setItem("jwt", data.jwt);
       setErrorMessage(false);
-    }).catch(error => {
+    } catch (error) {
       setErrorMessage(true);
-    });
+    }
   };
-  
 
   return (
     <form onSubmit={HandleSubmit} className="form">
@@ -64,17 +65,17 @@ const Form = () => {
         type="text"
         name="name"
         value={name}
-        isErorr = {isNameEmpty}
+        isErorr={isNameEmpty}
       />
       {isNameEmpty && <div className="error">Please enter the name</div>}
       <Input
-      isErorr = {isPasswordEmpty}
+        isErorr={isPasswordEmpty}
         value={password}
         onInputChange={(value) => {
           setPassword(value);
           setIsPasswordEmpty(false);
         }}
-        name= "password"
+        name="password"
         placeholder="Enter Password"
         classDiv="container"
         type={isPasswordVisible ? "text" : "password"}
@@ -86,7 +87,9 @@ const Form = () => {
           )
         }
       />
-      {isPasswordEmpty && <div className="error">Please enter the password</div>}
+      {isPasswordEmpty && (
+        <div className="error">Please enter the password</div>
+      )}
       <Button className="btn" text="Login" />
       {errorMessage && <div className="error">Data is not valid</div>}
     </form>
