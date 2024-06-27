@@ -13,12 +13,12 @@ const productInfo = [
 
 
 const ProductDetail = () => {
-    const { ProductDetail } = useParams();
-    const product = productInfo.find(p => ProductDetail.id === parseInt(id));
+    const { id } = useParams();
+    const product = productInfo.find(p => p.id === parseInt(id));
   
     return (
       <div className="product-detail">
-        <p> ProductDetail {product}</p>
+        <p> ProductDetail {product.id}</p>
       </div>
     );
   };
