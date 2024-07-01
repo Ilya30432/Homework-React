@@ -1,0 +1,89 @@
+.box-logo{
+    background-color: rgb(68, 178, 111);
+}
+
+.box-detail{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+    margin-left: 40px;
+}
+
+.box-detail > svg{
+    width: 40px;
+    height: 40px;
+}
+
+.info-text{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.box-information{
+    display: flex;
+    flex-direction:row ;
+    gap: 50px;
+    margin-left: 70px;
+}
+
+
+.box-foto{
+    width: 300px;
+    height: 300px;
+}
+
+.box-foto > img {
+    width: 300px;
+    height: 300px;
+}
+
+.box-infa{
+    display: flex;
+    flex-direction:column ;
+    gap: 30px;
+}
+
+.infa-status{
+    color: rgb(5, 188, 82);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 23px;
+}
+
+.infa-status > svg{
+    width: 20px;
+    height: 20px;
+}
+
+.infa-price{
+    color: orange;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.infa-quantity{
+    font-size: 18px;
+}
+
+.based-info{
+    margin: 40px 0 0 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.based-name{
+    font-size: 32px;
+    color: rgb(217, 217, 217);
+}
+
+.based-name > span {
+    color: black;
+}
+
+.based-text{
+    font-size: 20px;
+    font-weight: 700;
+}

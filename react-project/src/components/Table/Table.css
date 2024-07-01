@@ -67,6 +67,17 @@
     text-align: center;
 }
 
+
+.row-6{
+    background-color: rgb(14, 200, 111);
+}
+.info-6{
+    padding: 10px 40px 10px 40px;
+    color: rgb(114, 105, 105);
+    font-weight: 700;
+    text-align: center;
+}
+
 .icon{
     padding: 10px 40px 10px 40px;
     display: flex;
