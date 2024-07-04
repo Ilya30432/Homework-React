@@ -2,45 +2,9 @@ import logo from "../Products/rozetka1.svg";
 import CardProducts from "../../components/CardProducts/CardProdutcts";
 import { useNavigate } from "react-router-dom";
 import "./ProductsInfo.css";
+import React, { useState, useEffect } from "react";
+import { API_URL } from "../../constants"
 
-const productInfo = [
-  {
-    id: 0,
-    name: "Ноутбук Lenovo Y50-70 Aluminum Black",
-    quantity: 5,
-    price: 25000,
-  },
-  {
-    id: 1,
-    name: "Ноутбук Asus A60-70 Aluminum Blue",
-    quantity: 5,
-    price: 29000,
-  },
-  {
-    id: 2,
-    name: "Ноутбук HP K100-70 Aluminum White",
-    quantity: 5,
-    price: 34000,
-  },
-  {
-    id: 3,
-    name: "Ноутбук HP K100-70 Aluminum White",
-    quantity: 5,
-    price: 34000,
-  },
-  {
-    id: 4,
-    name: "Ноутбук HP K100-70 Aluminum White",
-    quantity: 5,
-    price: 34000,
-  },
-  {
-    id: 5,
-    name: "Ноутбук HP K100-70 Aluminum White",
-    quantity: 5,
-    price: 34000,
-  },
-];
 
 const ProductsInfo = () => {
   const navigate = useNavigate();
@@ -49,11 +13,26 @@ const ProductsInfo = () => {
     navigate(`/productsInfo/${id}`);
   };
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const infoProduct = async () => {
+      try {
+        const response = await fetch(`${API_URL}/Product`);
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.log("Erorr", error);
+      }
+    };
+    infoProduct();
+  }, []);
+
   return (
     <div className="products-info">
       <img src={logo} alt="rozetka" />
       <div className="box-info">
-        {productInfo.map((product) => (
+        {products.map((product) => (
           <CardProducts product={product} onClick={handleCardClick} />
         ))}
       </div>
