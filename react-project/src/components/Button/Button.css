@@ -1,4 +1,4 @@
-.btn{
+.btns{
     background: #44B26F;
     width: 250px;
     height: 46px;
@@ -8,7 +8,7 @@
     line-height: 29.05px;
 }
 
-.btn-table{
+.btns-table{
     color: rgb(5, 188, 82);
     background-color: rgb(255, 255, 255);
     width: 140px;
@@ -21,7 +21,7 @@
     gap: 5px;
 }
 
-.btn-table > svg{
+.btns-table > svg{
     color: black;
     font-size: 24px;
 }

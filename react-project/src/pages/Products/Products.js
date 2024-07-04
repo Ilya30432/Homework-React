@@ -10,21 +10,33 @@ import { useNavigate } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const infoProduct = async () => {
-      try {
-        const response = await fetch(`${API_URL}/Product`);
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.log("Erorr", error);
-      }
-    };
-    infoProduct();
-  }, []);
+    if(!isLoaded){
+      infoProduct();
+    }
+  }, [isLoaded]);
+
+  const infoProduct = async () => {
+    try {
+      const response = await fetch(`${API_URL}/Product`);
+      const data = await response.json();
+      setProducts(data);
+      setIsLoaded(true)
+    } catch (error) {
+      console.log("Erorr", error);
+    }
+  };
+
+  const deleteProduct = async (id) => {
+    await fetch(`${API_URL}/Product/${id}`,{
+      method : 'DELETE'
+    });
+    setIsLoaded(false)
+  } 
 
   const handlePreview = () => {
     navigate("/productsInfo");
@@ -38,14 +50,14 @@ function Products() {
       <div className="box-btn">
         <Button
           onClick={handlePreview}
-          className="btn-table"
+          className="btns-table"
           text="Preview"
           icon={<MdOutlinePeopleAlt />}
         />
-        <Button className="btn-table" text="Add product" icon={<GoPlus />} />
+        <Button className="btns-table" text="Add product" icon={<GoPlus />} />
       </div>
       <h2 className="title">Products</h2>
-      <Table products={products} />
+      <Table products={products} deleteProduct = {deleteProduct} />
     </div>
   );
 }
