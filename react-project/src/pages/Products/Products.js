@@ -16,11 +16,11 @@ function Products() {
 
   useEffect(() => {
     if(!isLoaded){
-      infoProduct();
+      getProducts();
     }
   }, [isLoaded]);
 
-  const infoProduct = async () => {
+  const getProducts = async () => {
     try {
       const response = await fetch(`${API_URL}/Product`);
       const data = await response.json();

@@ -14,10 +14,10 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    infoProduct(); 
+    getProducts(); 
   }, [id]);
 
-  const infoProduct = async () => {
+  const getProducts = async () => {
     try {
       const response = await fetch(`${API_URL}/Product/${id}`);
       const data = await response.json();
