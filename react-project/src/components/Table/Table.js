@@ -6,11 +6,13 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import ExampleModal from "../Modal/Modal";
+import FormModal from "../FormModal/FormModal";
 
 const titleInfo = ["Id", "Category", "Name", "Quantity", "Price(₴)"];
 
 function Table({ products, deleteProduct }) {
   const [show, setShow] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [productIdToDelete, setProductIdToDelete] = useState(null);
 
   const handleClose = () => {
@@ -25,6 +27,14 @@ function Table({ products, deleteProduct }) {
   const handleDelete = () => {
     deleteProduct(productIdToDelete);
     handleClose();
+  };
+
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
   };
 
   return (
@@ -51,7 +61,7 @@ function Table({ products, deleteProduct }) {
               ))}
               <td>
                 <p className="icon">
-                  <BiSolidPencil />
+                  <BiSolidPencil onClick={() => handleShowForm()} />
                   <FaTrashCan onClick={() => handleShow(product.id)} />
                 </p>
               </td>
@@ -61,7 +71,14 @@ function Table({ products, deleteProduct }) {
         <ExampleModal
           show={show}
           handleClose={handleClose}
-          handleDelete={handleDelete}
+          handleAction={handleDelete}
+          text="Delete"
+          body="Подверить дейстивие"
+        />
+        <FormModal
+          show={showForm}
+          handleCloseForm={handleCloseForm}
+          title="Edit Product"
         />
       </table>
     </div>

@@ -7,15 +7,17 @@ import { GoPlus } from "react-icons/go";
 import React, { useState, useEffect } from "react";
 import { API_URL } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import FormModal from "../../components/FormModal/FormModal";
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isLoaded){
+    if (!isLoaded) {
       getProducts();
     }
   }, [isLoaded]);
@@ -25,21 +27,29 @@ function Products() {
       const response = await fetch(`${API_URL}/Product`);
       const data = await response.json();
       setProducts(data);
-      setIsLoaded(true)
+      setIsLoaded(true);
     } catch (error) {
       console.log("Erorr", error);
     }
   };
 
   const deleteProduct = async (id) => {
-    await fetch(`${API_URL}/Product/${id}`,{
-      method : 'DELETE'
+    await fetch(`${API_URL}/Product/${id}`, {
+      method: "DELETE",
     });
-    setIsLoaded(false)
-  } 
+    setIsLoaded(false);
+  };
 
   const handlePreview = () => {
     navigate("/productsInfo");
+  };
+
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
   };
 
   return (
@@ -54,10 +64,20 @@ function Products() {
           text="Preview"
           icon={<MdOutlinePeopleAlt />}
         />
-        <Button className="btns-table" text="Add product" icon={<GoPlus />} />
+        <Button
+          className="btns-table"
+          text="Add product"
+          icon={<GoPlus />}
+          onClick={handleShowForm}
+        />
       </div>
       <h2 className="title">Products</h2>
-      <Table products={products} deleteProduct = {deleteProduct} />
+      <Table products={products} deleteProduct={deleteProduct} />
+      <FormModal
+        show={showForm}
+        handleCloseForm={handleCloseForm}
+        title="Add Product"
+      />
     </div>
   );
 }
