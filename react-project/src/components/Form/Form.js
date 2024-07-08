@@ -81,7 +81,7 @@ const Form = () => {
         }}
         name="password"
         placeholder="Enter Password"
-        classDiv="container"
+        classDiv="containers"
         type={isPasswordVisible ? "text" : "password"}
         icon={
           isPasswordVisible ? (
@@ -94,7 +94,7 @@ const Form = () => {
       {isPasswordEmpty && (
         <div className="error">Please enter the password</div>
       )}
-      <Button className="btn" text="Login" />
+      <Button className="btns" text="Login" />
       {errorMessage && <div className="error">Data is not valid</div>}
     </form>
   );

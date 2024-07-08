@@ -14,17 +14,18 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const infoProduct = async () => {
-      try {
-        const response = await fetch(`${API_URL}/Product/${id}`);
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.log("Erorr", error);
-      }
-    };
-    infoProduct();
+    getProducts(); 
   }, [id]);
+
+  const getProducts = async () => {
+    try {
+      const response = await fetch(`${API_URL}/Product/${id}`);
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.log("Erorr", error);
+    }
+  };
 
   const handleBack = () => {
     navigate("/productsInfo");
@@ -41,7 +42,7 @@ const ProductDetail = () => {
       </div>
       <div className="box-information">
         <div className="box-foto">
-          <img src={products.foto} />
+          <img src={products.foto} alt="foto" />
         </div>
         <div className="box-infa">
           <p className="infa-status">
