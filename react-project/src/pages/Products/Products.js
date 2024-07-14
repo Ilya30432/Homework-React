@@ -39,6 +39,27 @@ function Products() {
     });
     setIsLoaded(false);
   };
+  const putProduct = async (id,product) => {
+    await fetch(`${API_URL}/Product/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    setIsLoaded(false);
+  };
+
+  const postProduct = async (product) => {
+    await fetch(`${API_URL}/Product/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    setIsLoaded(false);
+  };
 
   const handlePreview = () => {
     navigate("/productsInfo");
@@ -72,11 +93,12 @@ function Products() {
         />
       </div>
       <h2 className="title">Products</h2>
-      <Table products={products} deleteProduct={deleteProduct} />
+      <Table products={products} deleteProduct={deleteProduct} putProduct = {putProduct}/>
       <FormModal
         show={showForm}
         handleCloseForm={handleCloseForm}
         title="Add Product"
+        postProduct = {postProduct}
       />
     </div>
   );
