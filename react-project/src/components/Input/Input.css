@@ -11,9 +11,7 @@
     font-weight: 600;
 }
 
-.input-erorr{
-    border: 2px solid red;
-}
+
 .eye{
     right: 10px;
     position: absolute;
@@ -25,4 +23,9 @@
 
 .containers{
     position: relative;
+}
+
+.input-error {
+    border-color: red !important;
+    background-color: #ffefef !important;
 }

@@ -10,10 +10,11 @@ import FormModal from "../FormModal/FormModal";
 
 const titleInfo = ["Id", "Category", "Name", "Quantity", "Price(₴)"];
 
-function Table({ products, deleteProduct }) {
+function Table({ products, deleteProduct ,editProduct}) {
   const [show, setShow] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [productIdToDelete, setProductIdToDelete] = useState(null);
+  const [productToEdit, setProductToEdit] = useState(null);
 
   const handleClose = () => {
     setProductIdToDelete(null);
@@ -29,11 +30,13 @@ function Table({ products, deleteProduct }) {
     handleClose();
   };
 
-  const handleShowForm = () => {
+  const handleShowForm = (product) => {
+    setProductToEdit(product);
     setShowForm(true);
   };
 
   const handleCloseForm = () => {
+    setProductToEdit(null);
     setShowForm(false);
   };
 
@@ -61,7 +64,7 @@ function Table({ products, deleteProduct }) {
               ))}
               <td>
                 <p className="icon">
-                  <BiSolidPencil onClick={() => handleShowForm()} />
+                  <BiSolidPencil onClick={() => handleShowForm(product)} />
                   <FaTrashCan onClick={() => handleShow(product.id)} />
                 </p>
               </td>
@@ -79,6 +82,8 @@ function Table({ products, deleteProduct }) {
           show={showForm}
           handleCloseForm={handleCloseForm}
           title="Edit Product"
+          productToEdit = {productToEdit}
+          editProduct = {editProduct}
         />
       </table>
     </div>
