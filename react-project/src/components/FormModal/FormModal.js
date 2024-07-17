@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
 import "../Input/Input.css";
 
-function FormModal({ show, handleCloseForm, title, productToPut, putProduct ,postProduct}) {
+function FormModal({ show, handleCloseForm, title, productToEdit, editProduct ,addProduct}) {
   const [isCategory, setIsCategory] = useState(false);
   const [isName, setIsName] = useState(false);
   const [isQuantity, setIsQuantity] = useState(false);
@@ -48,13 +48,13 @@ function FormModal({ show, handleCloseForm, title, productToPut, putProduct ,pos
   });
 
   useEffect(() => {
-    if ( productToPut) {
+    if ( productToEdit) {
       setFormValues({
-        category: productToPut.category,
-        name: productToPut.name,
-        quantity: productToPut.quantity,
-        price: productToPut.price,
-        status: productToPut.status,
+        category: productToEdit.category,
+        name: productToEdit.name,
+        quantity: productToEdit.quantity,
+        price: productToEdit.price,
+        status: productToEdit.status,
       });
     } else {
       setFormValues({
@@ -65,7 +65,7 @@ function FormModal({ show, handleCloseForm, title, productToPut, putProduct ,pos
         status: "",
       });
     }
-  }, [productToPut]);
+  }, [productToEdit]);
 
   const resetForm = () => {
     setFormValues({
@@ -115,10 +115,10 @@ function FormModal({ show, handleCloseForm, title, productToPut, putProduct ,pos
     if (!isValid) {
       return;
     }
-    if (productToPut) {
-      await putProduct(productToPut.id, formValues);
+    if (productToEdit) {
+      await editProduct(productToEdit.id, formValues);
     } else {
-      await postProduct(formValues);
+      await addProduct(formValues);
     }
     handleCloseForm();
   };

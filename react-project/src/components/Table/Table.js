@@ -10,11 +10,11 @@ import FormModal from "../FormModal/FormModal";
 
 const titleInfo = ["Id", "Category", "Name", "Quantity", "Price(₴)"];
 
-function Table({ products, deleteProduct ,putProduct}) {
+function Table({ products, deleteProduct ,editProduct}) {
   const [show, setShow] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [productIdToDelete, setProductIdToDelete] = useState(null);
-  const [productToPut, setProductToPut] = useState(null);
+  const [productToEdit, setProductToEdit] = useState(null);
 
   const handleClose = () => {
     setProductIdToDelete(null);
@@ -31,12 +31,12 @@ function Table({ products, deleteProduct ,putProduct}) {
   };
 
   const handleShowForm = (product) => {
-    setProductToPut(product);
+    setProductToEdit(product);
     setShowForm(true);
   };
 
   const handleCloseForm = () => {
-    setProductToPut(null);
+    setProductToEdit(null);
     setShowForm(false);
   };
 
@@ -82,8 +82,8 @@ function Table({ products, deleteProduct ,putProduct}) {
           show={showForm}
           handleCloseForm={handleCloseForm}
           title="Edit Product"
-          productToPut = {productToPut}
-          putProduct = {putProduct}
+          productToEdit = {productToEdit}
+          editProduct = {editProduct}
         />
       </table>
     </div>

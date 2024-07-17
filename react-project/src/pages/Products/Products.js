@@ -39,7 +39,7 @@ function Products() {
     });
     setIsLoaded(false);
   };
-  const putProduct = async (id,product) => {
+  const editProduct = async (id,product) => {
     await fetch(`${API_URL}/Product/${id}`, {
       method: "PUT",
       headers: {
@@ -50,7 +50,7 @@ function Products() {
     setIsLoaded(false);
   };
 
-  const postProduct = async (product) => {
+  const addProduct = async (product) => {
     await fetch(`${API_URL}/Product/`, {
       method: "POST",
       headers: {
@@ -93,12 +93,12 @@ function Products() {
         />
       </div>
       <h2 className="title">Products</h2>
-      <Table products={products} deleteProduct={deleteProduct} putProduct = {putProduct}/>
+      <Table products={products} deleteProduct={deleteProduct} editProduct = {editProduct}/>
       <FormModal
         show={showForm}
         handleCloseForm={handleCloseForm}
         title="Add Product"
-        postProduct = {postProduct}
+        addProduct = {addProduct}
       />
     </div>
   );
